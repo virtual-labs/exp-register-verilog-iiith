@@ -1,1 +1,421 @@
-/* You CSS goes in here */
+/* Main styles for the Register Verilog Simulation */
+
+.v-datalist-container {
+    height: 100%;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid #97d23d;
+    border-radius: 8px;
+    margin: 10px;
+    overflow: hidden;
+}
+
+.v-datalist-title {
+    padding: 10px;
+    background-color: #f5f5f5;
+    border-bottom: 1px solid #ddd;
+}
+
+#container, #containerTB {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;
+}
+
+.custom-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.custom-list li {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    padding: 10px;
+    cursor: move;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.custom-list li.dragging {
+    opacity: 0.5;
+    background-color: #f0f0f0;
+}
+
+/* Fix testbench column width alignment */
+.column {
+    display: flex;
+    flex-direction: column;
+    padding: 10px !important;
+}
+
+.v-datalist-container {
+    width: 100%;
+    margin: 0;
+}
+
+/* Remove extra margins and padding */
+.columns {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Ensure consistent width for code blocks */
+#container li, #containerTB li {
+    width: calc(100% - 20px);
+    margin: 10px;
+}
+
+/* Fix spacing in testbench code blocks */
+#containerTB li p {
+    margin: 0;
+    padding: 0;
+}
+
+/* Ensure consistent indentation */
+#containerTB li p {
+    padding-left: 10px;
+}
+
+/* Remove extra space at the bottom of columns */
+.v-datalist-container:last-child {
+    margin-bottom: 0;
+}
+
+.custom-list li p {
+    margin: 0;
+    font-family: monospace;
+    white-space: pre-wrap;
+    word-break: break-all;
+}
+
+.custom-list li.correct {
+    border-color: #4caf50;
+    background-color: #e8f5e9;
+}
+
+.custom-list li.incorrect {
+    border-color: #f44336;
+    background-color: #ffebee;
+}
+
+.user-input {
+    width: 60px;
+    padding: 2px 5px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    font-family: monospace;
+}
+
+.user-input.correct {
+    border-color: #4caf50;
+    background-color: #e8f5e9;
+}
+
+.user-input.incorrect {
+    border-color: #f44336;
+    background-color: #ffebee;
+}
+
+.truth-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.truth-table th,
+.truth-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+.truth-table th {
+    background-color: #f5f5f5;
+    font-weight: bold;
+}
+
+.text-success {
+    color: green;
+    font-weight: bold;
+    text-align: center;
+}
+
+.text-danger {
+    color: red;
+    font-weight: bold;
+    text-align: center;
+}
+
+.v-collapsible {
+    background-color: #f5f5f5;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-bottom: 0;
+    border: none;
+}
+
+.v-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    padding: 0 10px;
+}
+
+.v-content.active {
+    max-height: 500px;
+    transition: max-height 0.5s ease-in;
+    padding: 10px;
+}
+
+.v-tabs {
+    margin-bottom: 2rem;
+}
+
+.v-tabs ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.v-tabs li {
+    padding: 10px 20px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    border-bottom: none;
+    margin-right: 5px;
+}
+
+.v-tabs li.is-active {
+    background-color: #fff;
+    border-color: #ddd;
+    border-bottom-color: #fff;
+    margin-bottom: -1px;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.buttons button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.buttons button:hover {
+    opacity: 0.9;
+}
+
+#verify {
+    background-color: #4caf50;
+    color: white;
+}
+
+#reset {
+    background-color: #f44336;
+    color: white;
+}
+
+.toolbar-item-list {
+    overflow-y: auto;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: flex-start;
+    gap: 0.625rem;
+    padding: 0.625rem;
+}
+
+.code-area {
+    font-family: monospace;
+    overflow: auto;
+}
+
+.vt-code {
+    min-height: 31.25rem;
+    height: 70vh;
+    font-family: monospace;
+    overflow: auto;
+    background-color: rgb(220, 220, 220);
+}
+
+#obs-table {
+    overflow: auto;
+    min-height: 70%;
+}
+
+#obs-table>img {
+    height: 100%;
+    vertical-align: bottom;
+    max-width: 300%;
+}
+
+.highlight {
+    border: 2px solid red;
+}
+
+.highlight:focus {
+    outline: none;
+    border-color: orange;
+}
+
+#container {
+    display: flex;
+    flex-direction: column;
+    padding: auto;
+    margin: auto;
+    text-align: left;
+}
+
+#containerTB {
+    display: flex;
+    flex-direction: column;
+    padding: auto;
+    margin: auto;
+    text-align: left;
+}
+
+.comment {
+    color: green;
+    font-style: italic;
+}
+
+ul.custom-list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+ul.custom-list li {
+    padding: 10px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    background-color: lightgray;
+    cursor: move;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+li.drag-sort-active {
+    background: transparent;
+    color: transparent;
+    border: 1px greenyellow;
+}
+
+span.drag-sort-active {
+    padding: 10px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    background-color: lightgray;
+    cursor: move;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.success-table {
+    font-size: 1rem;
+    color: rgb(31, 170, 31);
+    font-weight: bold;
+}
+
+.failure-table {
+    font-size: 1rem;
+    color: rgb(228, 23, 23);
+    font-weight: bold;
+}
+
+.bold-table {
+    font-weight: bold;
+}
+
+.v-instruction-container {
+    border: 2px solid #97d23d;
+    border-radius: 8px;
+    margin: 10px;
+    overflow: hidden;
+}
+
+/* Error and success message styling */
+.v-error {
+    color: red !important;
+    font-weight: bold !important;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 4px;
+    background-color: #ffebee;
+}
+
+.v-success {
+    color: green !important;
+    font-weight: bold !important;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 4px;
+    background-color: #e8f5e9;
+}
+
+/* Button styling */
+.v-button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.v-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Table styling */
+.v-table-wrap {
+    margin-top: 10px;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.table {
+    margin-bottom: 0;
+}
+
+.table th {
+    background-color: #f5f5f5;
+    font-weight: bold;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+    .v-datalist-container {
+        margin: 5px;
+    }
+    
+    .v-instruction-container {
+        margin: 5px;
+    }
+}
