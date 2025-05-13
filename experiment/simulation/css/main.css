@@ -21,12 +21,15 @@
     flex: 1;
     padding: 10px;
     overflow-y: auto;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .custom-list {
     list-style: none;
     padding: 0;
     margin: 0;
+    width: 100%;
 }
 
 .custom-list li {
@@ -36,7 +39,7 @@
     margin-bottom: 10px;
     padding: 10px;
     cursor: move;
-    width: 100%;
+    width: calc(100% - 20px);
     box-sizing: border-box;
 }
 
@@ -50,34 +53,36 @@
     display: flex;
     flex-direction: column;
     padding: 10px !important;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .v-datalist-container {
     width: 100%;
     margin: 0;
+    box-sizing: border-box;
 }
 
 /* Remove extra margins and padding */
 .columns {
     margin: 0 !important;
     padding: 0 !important;
+    width: 100%;
 }
 
 /* Ensure consistent width for code blocks */
 #container li, #containerTB li {
     width: calc(100% - 20px);
     margin: 10px;
+    box-sizing: border-box;
 }
 
 /* Fix spacing in testbench code blocks */
 #containerTB li p {
     margin: 0;
     padding: 0;
-}
-
-/* Ensure consistent indentation */
-#containerTB li p {
-    padding-left: 10px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 /* Remove extra space at the bottom of columns */
@@ -90,6 +95,28 @@
     font-family: monospace;
     white-space: pre-wrap;
     word-break: break-all;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Style for input boxes and dropdowns */
+.custom-list li input,
+.custom-list li select {
+    display: inline-block;
+    margin: 0;
+    padding: 2px 2px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    font-family: monospace;
+    vertical-align: middle;
+}
+
+/* Ensure inputs and dropdowns maintain left alignment */
+.custom-list li input[type="text"],
+.custom-list li select {
+    text-align: left;
+    margin-left: 0;
+    /*margin-right: 5px;*/
 }
 
 .custom-list li.correct {
@@ -102,9 +129,44 @@
     background-color: #ffebee;
 }
 
+/* Ensure columns have equal width */
+.column.is-3-desktop {
+    width: 33.333% !important;
+    flex: 0 0 33.333% !important;
+    max-width: 33.333% !important;
+}
+
+/* Fix testbench code block width */
+#containerTB .custom-list li {
+    width: calc(100% - 20px);
+    margin: 10px;
+    box-sizing: border-box;
+}
+
+/* Ensure consistent width for all code blocks */
+.custom-list li {
+    width: calc(100% - 20px) !important;
+    margin: 10px !important;
+    box-sizing: border-box !important;
+}
+
+/* Maintain original styling for code blocks with inputs */
+.custom-list li p {
+    text-align: left !important;
+    padding-left: 10px !important;
+}
+
+/* Ensure dropdowns and inputs are properly aligned */
+.custom-list li select,
+.custom-list li input[type="text"] {
+    margin-left: 0 !important;
+    text-align: left !important;
+    display: inline-block !important;
+}
+
 .user-input {
     width: 60px;
-    padding: 2px 5px;
+    padding: 2px 2px;
     border: 1px solid #ddd;
     border-radius: 3px;
     font-family: monospace;
@@ -185,11 +247,11 @@
 }
 
 .v-tabs li {
-    padding: 10px 20px;
+    padding: 5px 10px;
     cursor: pointer;
     border: 1px solid transparent;
     border-bottom: none;
-    margin-right: 5px;
+    margin-right: 2px;
 }
 
 .v-tabs li.is-active {
@@ -418,4 +480,50 @@ span.drag-sort-active {
     .v-instruction-container {
         margin: 5px;
     }
+}
+
+/* Code block specific indentation */
+.code-block {
+    font-family: monospace;
+}
+
+.code-block p {
+    margin: 0;
+    padding: 0;
+}
+
+/* Module declaration indentation */
+.module-decl {
+    padding-left: 0;
+}
+
+/* Port declaration indentation */
+.port-decl {
+    padding-left: 20px;
+}
+
+/* Always block indentation */
+.always-block {
+    padding-left: 20px;
+}
+
+.always-block p {
+    padding-left: 20px;
+}
+
+/* Testbench specific indentation */
+.testbench-decl {
+    padding-left: 0;
+}
+
+.testbench-port {
+    padding-left: 20px;
+}
+
+.testbench-initial {
+    padding-left: 20px;
+}
+
+.testbench-initial p {
+    padding-left: 20px;
 }
