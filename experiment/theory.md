@@ -119,56 +119,6 @@ The Verilog code for implementing a T-Flip Flop using a D-Flip Flop is shown bel
 
 ---
 
-# Types of Adders
-
-## Half Adder
-
-<p align="center">
-  <img src="images/half_adder.png" alt="Half Adder Circuit">
-</p>
-
-A half adder adds two 1-bit binary numbers, **A** and **B**, producing a 1-bit **SUM (S)** and a 1-bit **CARRY (C)**. The carry is propagated to the next bit position. The outputs can be expressed as:
-
-- **S = A XOR B**
-- **C = A AND B**
-
-### Truth Table
-
-| A   | B   | CARRY | SUM |
-| --- | --- | ----- | --- |
-| 0   | 0   | 0     | 0   |
-| 0   | 1   | 0     | 1   |
-| 1   | 0   | 0     | 1   |
-| 1   | 1   | 1     | 0   |
-
----
-
-## Full Adder
-
-<p align="center">
-  <img src="images/full_adder.png" alt="Full Adder Circuit">
-</p>
-
-A full adder adds two 1-bit binary numbers (**A** and **B**) and a carry-in (**Cin**), producing a sum (**S**) and a carry-out (**Cout**). The outputs are defined as:
-
-- **S = A XOR B XOR Cin**
-- **Cout = (A AND B) OR (Cin AND (A XOR B))**
-
-### Truth Table
-
-| A   | B   | Cin | Cout | S   |
-| --- | --- | --- | ---- | --- |
-| 0   | 0   | 0   | 0    | 0   |
-| 1   | 0   | 0   | 0    | 1   |
-| 0   | 1   | 0   | 0    | 1   |
-| 1   | 1   | 0   | 1    | 0   |
-| 0   | 0   | 1   | 0    | 1   |
-| 1   | 0   | 1   | 1    | 0   |
-| 0   | 1   | 1   | 1    | 0   |
-| 1   | 1   | 1   | 1    | 1   |
-
----
-
 ## Introduction to Registers
 
 Registers are fundamental building blocks in digital systems that store binary data. They are essentially a collection of flip-flops that can store multiple bits of information. In this experiment, we focus on a specific type of register called the Serial In Serial Out (SISO) register.
