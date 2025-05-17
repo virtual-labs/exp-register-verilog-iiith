@@ -359,6 +359,8 @@
     padding: auto;
     margin: auto;
     text-align: left;
+    width: 100% !important;
+    padding: 0 !important;
 }
 
 .comment {
@@ -526,4 +528,31 @@ span.drag-sort-active {
 
 .testbench-initial p {
     padding-left: 20px;
+}
+
+/* Fix testbench specific styles */
+#containerTB {
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+#containerTB .custom-list {
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+#containerTB .custom-list li {
+    width: calc(100% - 20px) !important;
+    margin: 10px !important;
+    padding: 10px !important;
+    box-sizing: border-box !important;
+}
+
+#containerTB .custom-list li p {
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 10px !important;
+    box-sizing: border-box !important;
 }

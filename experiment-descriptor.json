@@ -35,9 +35,9 @@
       "content-type": "assesment"
     },
     {
-      "target": "practice.html",
+      "target": "simulation.html",
       "source": "simulation/index.html",
-      "label": "Practice",
+      "label": "Simulation",
       "unit-type": "task",
       "content-type": "simulation"
     },
