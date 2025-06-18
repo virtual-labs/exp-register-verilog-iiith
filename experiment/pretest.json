@@ -12,10 +12,10 @@
       "correctAnswer": "b",
       "difficulty": "beginner",
       "explanations": {
-        "a": "Registers are not combinational circuits, they are sequential circuits",
-        "b": "Correct! A register is a sequential circuit that stores binary data using flip-flops",
-        "c": "While registers can be part of memory systems, they are not specifically for program instructions",
-        "d": "Registers are not logic gates, they are storage elements"
+        "a": "Incorrect. Registers are not combinational circuits, they are sequential circuits that store data.",
+        "b": "Correct! A register is a sequential circuit that stores binary data using flip-flops.",
+        "c": "Incorrect. While registers can be part of memory systems, they are not specifically for program instructions.",
+        "d": "Incorrect. Registers are not logic gates, they are storage elements made up of flip-flops."
       }
     },
     {
@@ -29,10 +29,10 @@
       "correctAnswer": "b",
       "difficulty": "beginner",
       "explanations": {
-        "a": "This is incorrect. Combinational circuits don't have memory",
-        "b": "Correct! Sequential circuits have memory elements (flip-flops) while combinational circuits don't",
-        "c": "The number of gates is not the defining difference",
-        "d": "Speed is not the defining characteristic between these circuit types"
+        "a": "Incorrect. Combinational circuits don't have memory, they only perform logic operations.",
+        "b": "Correct! Sequential circuits have memory elements (flip-flops) while combinational circuits don't.",
+        "c": "Incorrect. The number of gates is not the defining difference between these circuit types.",
+        "d": "Incorrect. Speed is not the defining characteristic between these circuit types."
       }
     },
     {
@@ -46,10 +46,10 @@
       "correctAnswer": "b",
       "difficulty": "intermediate",
       "explanations": {
-        "a": "This describes a parallel shift register, not a SISO register",
-        "b": "Correct! In a SISO register, data moves one bit at a time from input to output",
-        "c": "This describes a bidirectional shift register",
-        "d": "Data movement in registers is deterministic, not random"
+        "a": "Incorrect. This describes a parallel shift register, not a SISO register.",
+        "b": "Correct! In a SISO register, data moves one bit at a time from input to output on each clock edge.",
+        "c": "Incorrect. This describes a bidirectional shift register, not a SISO register.",
+        "d": "Incorrect. Data movement in registers is deterministic and controlled by the clock signal."
       }
     },
     {
@@ -63,10 +63,10 @@
       "correctAnswer": "b",
       "difficulty": "beginner",
       "explanations": {
-        "a": "The clock signal is not used for power distribution",
-        "b": "Correct! The clock signal synchronizes when data moves through the circuit",
-        "c": "The clock signal is not used for random number generation",
-        "d": "While the clock affects when data moves, it doesn't control the input data itself"
+        "a": "Incorrect. The clock signal is not used for power distribution, it's for timing control.",
+        "b": "Correct! The clock signal synchronizes when data moves through the circuit, ensuring proper operation.",
+        "c": "Incorrect. The clock signal is not used for random number generation.",
+        "d": "Incorrect. While the clock affects when data moves, it doesn't control the input data itself."
       }
     },
     {
@@ -80,10 +80,10 @@
       "correctAnswer": "c",
       "difficulty": "beginner",
       "explanations": {
-        "a": "2 flip-flops can only store 2 bits",
-        "b": "3 flip-flops can only store 3 bits",
-        "c": "Correct! A 4-bit register needs exactly 4 flip-flops",
-        "d": "8 flip-flops would be too many for a 4-bit register"
+        "a": "Incorrect. 2 flip-flops can only store 2 bits, which is insufficient for a 4-bit register.",
+        "b": "Incorrect. 3 flip-flops can only store 3 bits, which is insufficient for a 4-bit register.",
+        "c": "Correct! A 4-bit register needs exactly 4 flip-flops, one for each bit of storage.",
+        "d": "Incorrect. 8 flip-flops would be too many for a 4-bit register."
       }
     }
   ]

@@ -1,132 +1,10 @@
-This page provides an overview of Verilog, its significance, and practical examples of digital design using Verilog. We will explore three fundamental designs in this experiment:
+### Introduction to Registers
 
-1. **T-Flip Flop**
-2. **Counter**
-3. **T-Flip Flop Using D-Flip Flop**
+Registers are fundamental building blocks in digital systems that store binary data. They are essentially a collection of flip-flops that can store multiple bits of information. In this experiment, we focus on Serial In Serial Out (SISO) registers.
 
----
-
-Verilog is a hardware description language (HDL) developed to model electronic systems. It enables designers to describe the structure and behavior of digital circuits, facilitating simulation, synthesis, and verification. The modular nature of Verilog allows for efficient design, testing, and reuse of code.
-
----
-
-## 1. T-Flip Flop
-
-The Verilog code for a T-Flip Flop is shown below, accompanied by an explanation of its components:
-
-<p align="center">
-  <img src="images/t.jpg" alt="T-Flip Flop Verilog Code">
-</p>
-
-### Key Concepts
-
-- **Module:**  
-  A module is the fundamental building block in Verilog. It can represent a single element or a collection of lower-level design blocks. Modules encapsulate functionality and expose interfaces through input and output ports, allowing for abstraction and reuse.
-
-- **Module Name:**  
-  The module name is user-defined and is used to instantiate the module elsewhere in the design. Instantiation is demonstrated in the third example.
-
-- **Module Arguments:**  
-  Similar to function arguments in C, module arguments specify the input and output ports used for communication with other modules or the external environment.
-
-- **Input/Output Ports:**  
-  These ports facilitate data transfer into and out of the module. All arguments listed in the module declaration must be defined as either input or output within the module.
-
-- **Data Types:**  
-  In this example, the `reg` data type is used. Other data types, such as `wire`, will be introduced in subsequent examples. Refer to the chart below for an overview of Verilog data types:
-
-  <p align="center">
-    <img src="images/data.jpg" alt="Verilog Data Types">
-  </p>
-
-- **Always Block:**  
-  The `always` block contains statements that execute repeatedly, triggered by changes in specified signals (e.g., clock or reset).
-
-- **Posedge Clock:**  
-  The `posedge` (positive edge) of the clock triggers the execution of statements within the `always` block, corresponding to a transition from low to high voltage.
-
-- **Negedge Reset:**  
-  The `negedge` (negative edge) of the reset signal asynchronously sets the output to zero, regardless of the clock.
-
-- **Operators and Lexical Conventions:**  
-  Operators such as `~` (bitwise NOT) and `!` (logical NOT) are used in Verilog. The chart below summarizes various operators and conventions:
-
-  <p align="center">
-    <img src="images/lex.jpg" alt="Verilog Operators and Lexical Conventions">
-  </p>
-
-- **Loops:**  
-  Verilog supports control structures such as `for`, `if-else`, and `while`, similar to C. These structures use `begin` and `end` to define statement blocks.
-
-- **Blocking and Non-Blocking Assignments:**
-  - **Blocking (`=`):** Statements execute sequentially.
-  - **Non-Blocking (`<=`):** Statements execute concurrently.  
-    For example:
-    ```
-    a = b;
-    b = a;
-    ```
-    Both `a` and `b` will have the value of `b`.  
-    Using non-blocking assignment:
-    ```
-    a <= b;
-    b <= a;
-    ```
-    The values are swapped simultaneously.
-
----
-
-## 2. Counter
-
-The Verilog code for a counter is provided below, with explanations for each part:
-
-<p align="center">
-  <img src="images/c.jpg" alt="Counter Verilog Code">
-</p>
-
-### Additional Notes
-
-- **Assign Statement:**  
-  The `assign` keyword is used for continuous assignment. For example, `assign Q = tmp;` ensures that `Q` is updated immediately whenever `tmp` changes, regardless of execution sequence.
-
----
-
-## 3. T-Flip Flop Using D-Flip Flop
-
-The Verilog code for implementing a T-Flip Flop using a D-Flip Flop is shown below:
-
-<p align="center">
-  <img src="images/td.jpg" alt="T-Flip Flop using D-Flip Flop Verilog Code">
-</p>
-
-### Key Concepts
-
-- **Module Instantiation:**  
-  Modules are not defined within other modules; instead, they are instantiated (called) as needed. The module is referenced by its original name, but each instance must have a unique identifier. For example, the module `D_FF` is instantiated as `dff0`.
-
-- **Verilog Primitives:**  
-  Verilog provides built-in primitives such as `not`. In `not (d, q);`, `d` is the output and `q` is the input.
-
-- **Compiler Directives and System Tasks:**  
-  While not used in the above examples, Verilog supports compiler directives and system tasks for advanced functionality. Refer to the flowcharts below for more information:
-
-  <p align="center">
-    <img src="images/task.jpg" alt="Verilog System Tasks">
-  </p>
-  <p align="center">
-    <img src="images/direc.jpg" alt="Verilog Compiler Directives">
-  </p>
-
----
-
-## Introduction to Registers
-
-Registers are fundamental building blocks in digital systems that store binary data. They are essentially a collection of flip-flops that can store multiple bits of information. In this experiment, we focus on a specific type of register called the Serial In Serial Out (SISO) register.
-
-### SISO Register
+#### SISO Register
 
 A SISO register is a type of shift register where:
-
 - Data enters the register one bit at a time (serial input)
 - Data exits the register one bit at a time (serial output)
 - Data moves through the register one position at each clock cycle
@@ -139,50 +17,96 @@ A SISO register is a type of shift register where:
 4. The last flip-flop provides the serial output
 5. On each positive clock edge, data shifts one position to the right
 
+#### Truth Table
+
+| Clock Edge | Serial Input | Register State | Serial Output |
+|------------|--------------|----------------|---------------|
+| ↑ | $D_{in}$ | $Q_3Q_2Q_1Q_0$ | $Q_3$ |
+| ↑ | $D_{in}$ | $D_{in}Q_3Q_2Q_1$ | $Q_2$ |
+| ↑ | $D_{in}$ | $D_{in}D_{in}Q_3Q_2$ | $Q_1$ |
+| ↑ | $D_{in}$ | $D_{in}D_{in}D_{in}Q_3$ | $Q_0$ |
+
 #### Verilog Implementation
 
-The SISO register is implemented using:
-
-- A 4-bit register to store the data
-- An always block triggered by the positive edge of the clock
-- Non-blocking assignments for sequential logic
-- A reset signal to initialize the register
+```verilog
+module siso_register(
+    input clk,          // Clock input
+    input rst,          // Reset input
+    input din,          // Serial data input
+    output reg dout     // Serial data output
+);
+    // Internal register to store 4 bits
+    reg [3:0] shift_reg;
+    
+    // Sequential logic for shifting
+    always @(posedge clk or negedge rst) begin
+        if (!rst)
+            shift_reg <= 4'b0000;  // Reset to all zeros
+        else
+            shift_reg <= {din, shift_reg[3:1]};  // Shift right
+    end
+    
+    // Output assignment
+    assign dout = shift_reg[0];
+endmodule
+```
 
 #### Timing Characteristics
 
-- Setup Time: The time before the clock edge when input data must be stable
-- Hold Time: The time after the clock edge when input data must remain stable
-- Clock-to-Q Delay: The time taken for the output to change after the clock edge
+- Setup Time ($t_{setup}$): The time before the clock edge when input data must be stable
+- Hold Time ($t_{hold}$): The time after the clock edge when input data must remain stable
+- Clock-to-Q Delay ($t_{cq}$): The time taken for the output to change after the clock edge
+- Maximum Clock Frequency ($f_{max}$): $f_{max} = \frac{1}{t_{setup} + t_{cq}}$
 
-### Applications
+### Design Considerations
 
-SISO registers are used in:
+#### 1. Timing Analysis
+- Clock period must be greater than the sum of setup time and clock-to-Q delay
+- Input data must remain stable during the setup and hold time windows
+- Propagation delay through the register chain must be considered
 
-- Serial data transmission
-- Data buffering
-- Time delay circuits
-- Pattern recognition
-- Serial-to-parallel conversion
+#### 2. Power Consumption
+- Dynamic power: $P_{dynamic} = \alpha \cdot C \cdot V_{dd}^2 \cdot f$
+- Static power: $P_{static} = I_{leakage} \cdot V_{dd}$
+- Power optimization through clock gating and data activity reduction
 
-### Verilog Concepts Used
+#### 3. Area Optimization
+- Minimize number of flip-flops
+- Optimize routing between flip-flops
+- Consider trade-off between speed and area
 
-1. Sequential Logic
+#### Applications
 
-   - always @(posedge clk) blocks
-   - Non-blocking assignments (<=)
-   - Reset signals
+1. **Data Storage**
+   - Serial data buffering
+   - Temporary data storage
+   - Data delay circuits
 
-2. Data Types
+2. **Data Transmission**
+   - Serial communication
+   - Data synchronization
+   - Bit stream processing
 
-   - reg for sequential elements
-   - wire for combinational connections
+3. **Control Logic**
+   - Pattern recognition
+   - State machines
+   - Timing control
 
-3. Vector Operations
+#### Implementation Tips
 
-   - Bit concatenation
-   - Bit slicing
+1. **Design Approach**
+   - Use synchronous design
+   - Implement proper reset mechanism
+   - Consider metastability
 
-4. Testbench Design
-   - Clock generation
-   - Reset sequence
-   - Input stimulus
+2. **Verification**
+   - Test all input combinations
+   - Verify timing constraints
+   - Check power consumption
+
+3. **Optimization**
+   - Minimize gate count
+   - Reduce critical path
+   - Optimize power consumption
+
+> **Note:** This theory guide focuses on the fundamental concepts of register design and implementation. For practical implementation steps, refer to the procedure.md file.
