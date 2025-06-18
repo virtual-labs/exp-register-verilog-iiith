@@ -12,10 +12,10 @@
       "correctAnswer": "b",
       "difficulty": "intermediate",
       "explanations": {
-        "a": "Non-blocking assignments are not used for arithmetic operations",
-        "b": "Correct! Non-blocking assignments ensure proper sequential behavior by evaluating all right-hand sides before making assignments",
-        "c": "Combinational logic typically uses blocking assignments (=)",
-        "d": "Clock signals are generated separately, not through assignments"
+        "a": "Incorrect. Non-blocking assignments are not used for arithmetic operations, they are for sequential logic.",
+        "b": "Correct! Non-blocking assignments ensure proper sequential behavior by evaluating all right-hand sides before making assignments.",
+        "c": "Incorrect. Combinational logic typically uses blocking assignments (=), not non-blocking assignments.",
+        "d": "Incorrect. Clock signals are generated separately, not through assignments."
       }
     },
     {
@@ -29,10 +29,10 @@
       "correctAnswer": "d",
       "difficulty": "intermediate",
       "explanations": {
-        "a": "This would be true for a 1-bit register",
-        "b": "This would be true for a 2-bit register",
-        "c": "This would be true for a 3-bit register",
-        "d": "Correct! A 4-bit register has a 4-clock cycle delay as data moves through each flip-flop"
+        "a": "Incorrect. This would be true for a 1-bit register, but a 4-bit register requires more cycles.",
+        "b": "Incorrect. This would be true for a 2-bit register, but a 4-bit register requires more cycles.",
+        "c": "Incorrect. This would be true for a 3-bit register, but a 4-bit register requires more cycles.",
+        "d": "Correct! A 4-bit register has a 4-clock cycle delay as data must move through each flip-flop in sequence."
       }
     },
     {
@@ -46,10 +46,10 @@
       "correctAnswer": "c",
       "difficulty": "intermediate",
       "explanations": {
-        "a": "Reset overrides normal operation",
-        "b": "Reset typically clears the register to 0, not 1",
-        "c": "Correct! The reset signal clears all bits to 0 in the register",
-        "d": "The register still responds to the clock, but maintains 0 during reset"
+        "a": "Incorrect. Reset overrides normal operation and clears the register.",
+        "b": "Incorrect. Reset typically clears the register to 0, not 1.",
+        "c": "Correct! The reset signal clears all bits to 0 in the register, regardless of the clock state.",
+        "d": "Incorrect. The register still responds to the clock, but maintains 0 during reset."
       }
     },
     {
@@ -63,10 +63,10 @@
       "correctAnswer": "b",
       "difficulty": "intermediate",
       "explanations": {
-        "a": "initial blocks are used for testbenches, not sequential logic",
-        "b": "Correct! The always @(posedge clk) block implements sequential behavior triggered by clock edges",
-        "c": "assign statements are used for combinational logic",
-        "d": "functions are used for reusable code, not sequential behavior"
+        "a": "Incorrect. Initial blocks are used for testbenches, not sequential logic implementation.",
+        "b": "Correct! The always @(posedge clk) block implements sequential behavior triggered by clock edges.",
+        "c": "Incorrect. Assign statements are used for combinational logic, not sequential behavior.",
+        "d": "Incorrect. Functions are used for reusable code, not sequential behavior implementation."
       }
     },
     {
@@ -80,10 +80,10 @@
       "correctAnswer": "b",
       "difficulty": "advanced",
       "explanations": {
-        "a": "SISO registers are actually slower as they transfer one bit at a time",
-        "b": "Correct! SISO registers require fewer pins as data is transferred serially",
-        "c": "The storage capacity is the same for both types of registers",
-        "d": "Power consumption is not the primary advantage of SISO registers"
+        "a": "Incorrect. SISO registers are actually slower as they transfer one bit at a time.",
+        "b": "Correct! SISO registers require fewer pins as data is transferred serially, making them more efficient for I/O-limited systems.",
+        "c": "Incorrect. The storage capacity is the same for both types of registers.",
+        "d": "Incorrect. Power consumption is not the primary advantage of SISO registers."
       }
     }
   ]
