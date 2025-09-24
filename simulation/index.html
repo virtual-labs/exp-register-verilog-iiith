@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register Verilog Simulation</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/virtual-labs/virtual-style@0.0.8-b/css/style.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsPlumb/2.15.6/js/jsplumb.min.js"></script>
+    <link rel="stylesheet" href="./css/main.css" />
+  </head>
+  <body>
+    <div
+      class="columns mt-2 is-variable is-1 is-centered is-flex is-flex-wrap-wrap"
+    >
+      <div class="v-tabs">
+        <ul>
+          <li class="is-active">
+            <a>
+              <span>SHIFT REGISTER</span>
+            </a>
+          </li>
+          <li>
+            <a>
+              <span>PARALLEL REGISTER</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="columns is-centered">
+      <div class="column">
+        <div
+          class="v-collapsible-instruction-container v-instruction-container"
+        >
+          <div class="v-collapsible is-size-5" id="task-description">
+            Instructions
+          </div>
+          <div
+            class="v-content"
+            style="text-align: left; padding-left: 10%; padding-right: 10%"
+          >
+            <ul style="list-style: disc">
+              <li>
+                <b>
+                  Please read the PROCEDURE section carefully before starting
+                  the simulation for the experiment.
+                </b>
+              </li>
+              <li>
+                The verilog module and testbench code are partially filled and
+                divided into code blocks.
+              </li>
+              <li>
+                Drag and drop these code blocks to arrange them in the correct
+                order for the code to work.
+              </li>
+              <li>Complete the partially filled code blocks.</li>
+              <li>
+                Once you have completed the code and rearranged the blocks as
+                required, click on validate. This will give the output truth
+                table as per the code and will also give a success/failure
+                message accordingly.
+              </li>
+              <li>
+                Clicking on reset will reset the experiment and you can start
+                your practice again.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="columns is-variable is-1 is-centered is-flex is-flex-wrap-wrap my-0"
+    >
+      <div
+        id="start"
+        class="column is-1-desktop is-2-tablet is-3-mobile center-content"
+      >
+        <button class="v-button" onclick="validateCode()">Validate</button>
+      </div>
+      <div
+        id="restart"
+        class="column is-1-desktop is-2-tablet is-3-mobile center-content"
+      >
+        <button class="v-button" onclick="resetSimulation()">Reset</button>
+      </div>
+    </div>
+    <div class="columns is-variable is-3 is-centered is-flex is-flex-wrap-wrap">
+      <!-- Module Code Column -->
+      <div class="column is-3-desktop is-7-tablet is-11-mobile center-content">
+        <div class="v-datalist-container">
+          <div class="v-datalist-title">Verilog Module</div>
+          <div id="container">
+            <ul class="drag-sort-enable custom-list" id="module-blocks">
+              <li id="1" draggable="true">
+                <p>module <input type="text" id="module-name" placeholder="Enter module name" /></p>
+                <p>&nbsp;&nbsp;(<label>input </label><select id="input1-selector">
+                  <option value="" disabled selected>Select an input</option>
+                  <option value="clk">clk</option>
+                  <option value="rst">rst</option>
+                  <option value="d[3:0]">d[3:0]</option></select>,</p>
+                <p>&nbsp;&nbsp;(<label>input </label><select id="input2-selector">
+                  <option value="" disabled selected>Select an input</option>
+                  <option value="clk">clk</option>
+                  <option value="rst">rst</option>
+                  <option value="d[3:0]">d[3:0]</option></select>,</p>
+                <p>&nbsp;&nbsp;(<label>input </label><select id="input3-selector">
+                  <option value="" disabled selected>Select an input</option>
+                  <option value="clk">clk</option>
+                  <option value="rst">rst</option>
+                  <option value="d[3:0]">d[3:0]</option></select>,</p>
+                <p>&nbsp;&nbsp;(<label>output reg </label><select id="output-selector">
+                  <option value="" disabled selected>Select an output</option>
+                  <option value="q[3:0]">q[3:0]</option></select>);</p>
+              </li>
+              <li id="2" draggable="true">
+                <p>&nbsp;&nbsp;always @(posedge <select id="clock-selector">
+                  <option value="" disabled selected>Select clock</option>
+                  <option value="clk">clk</option>
+                  <option value="rst">rst</option>
+                </select></p>
+                <p>&nbsp;&nbsp;or posedge <select id="reset-selector">
+                  <option value="" disabled selected>Select reset</option>
+                  <option value="clk">clk</option>
+                  <option value="rst">rst</option></select>) begin</p>
+              </li>
+              <li id="3" draggable="true">
+                <p>&nbsp;&nbsp;if (<select id="reset-condition">
+                  <option value="" disabled selected>Select reset signal</option>
+                  <option value="clk">clk</option>
+                  <option value="rst">rst</option></select>)</p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;<select id="output-assign">
+                  <option value="" disabled selected>Select output</option>
+                  <option value="q">q</option>
+                </select> <= <select id="reset-value">
+                  <option value="" disabled selected>Select value</option>
+                  <option value="0">0</option>
+                  <option value="1">1</option></select>;</p>
+              </li>
+              <li id="4" draggable="true">
+                <p>&nbsp;&nbsp;else <select id="output-assign-else">
+                  <option value="" disabled selected>Select output</option>
+                  <option value="q">q</option>
+                </select> <= <select id="input-assign">
+                  <option value="" disabled selected>Select input</option>
+                  <option value="d">d</option></select>;</p>
+              </li>
+              <li id="5" draggable="true">
+                <p>&nbsp;&nbsp;end</p>
+              </li>
+              <li id="6" draggable="true">
+                <p>endmodule</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testbench Code Column -->
+      <div class="column is-3-desktop is-7-tablet is-11-mobile center-content">
+        <div class="v-datalist-container">
+          <div class="v-datalist-title">Testbench</div>
+          <div id="containerTB">
+            <ul class="drag-sort-enable custom-list" id="testbench-blocks">
+              <li id="1TB" draggable="true">
+                <p>module <input type="text" id="tb-name" placeholder="Enter testbench name" />;</p>
+              </li>
+              <li id="2TB" draggable="true">
+                <p>&nbsp;&nbsp;reg <select id="reg1-selector">
+                  <option value="" disabled selected>Select signal</option>
+                  <option value="clk">clk</option>
+                  <option value="rst">rst</option>
+                  <option value="d">d</option></select>,<select id="reg2-selector">
+                  <option value="" disabled selected>Select signal</option>
+                  <option value="clk">clk</option>
+                  <option value="rst">rst</option>
+                  <option value="d">d</option></select>,<select id="reg3-selector">
+                  <option value="" disabled selected>Select signal</option>
+                  <option value="clk">clk</option>
+                  <option value="rst">rst</option>
+                  <option value="d">d</option></select>;</p>
+              </li>
+              <li id="3TB" draggable="true">
+                <p>&nbsp;&nbsp;wire <select id="wire-selector">
+                  <option value="" disabled selected>Select signal</option>
+                  <option value="q">q</option></select>;</p>
+              </li>
+              <li id="4TB" draggable="true">
+                <p>&nbsp;&nbsp;<input type="text" id="module-name-tb" placeholder="Enter module name"/> dut (</p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select id="port1-selector">
+                  <option value="" disabled selected>Select port</option>
+                  <option value="clk">clk</option>
+                  <option value="rst">rst</option>
+                  <option value="d">d</option>
+                  <option value="q">q</option></select>,</p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select id="port2-selector">
+                  <option value="" disabled selected>Select port</option>
+                  <option value="clk">clk</option>
+                  <option value="rst">rst</option>
+                  <option value="d">d</option>
+                  <option value="q">q</option></select>,</p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select id="port3-selector">
+                  <option value="" disabled selected>Select port</option>
+                  <option value="clk">clk</option>
+                  <option value="rst">rst</option>
+                  <option value="d">d</option>
+                  <option value="q">q</option></select>,</p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select id="port4-selector">
+                  <option value="" disabled selected>Select port</option>
+                  <option value="clk">clk</option>
+                  <option value="rst">rst</option>
+                  <option value="d">d</option>
+                  <option value="q">q</option></select>);</p>
+              </li>
+              <li id="5TB" draggable="true">
+                <p>&nbsp;&nbsp;initial begin</p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;clk = 0; rst = 1; d = 0;</p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;#10 rst = 0;</p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;#10 d = 1;</p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;#10 d = 0;</p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;#10 $finish;</p>
+                <p>&nbsp;&nbsp;end</p>
+              </li>
+              <li id="6TB" draggable="true">
+                <p>&nbsp;&nbsp;always #5 clk = ~clk;</p>
+              </li>
+              <li id="7TB" draggable="true">
+                <p>endmodule</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Observations Column -->
+      <div class="column is-3-desktop is-7-tablet is-11-mobile center-content">
+        <div class="v-datalist-container">
+          <div class="v-datalist-title">Observations</div>
+          <div class="v-datalist-row">
+            <div id="result"></div>
+            <div class="v-table-wrap">
+              <table class="table is-bordered is-fullwidth">
+                <thead id="table-head"></thead>
+                <tbody id="table-body"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const currentTab = { SR: 0, PR: 1 };
+      let selectedTab = currentTab.SR;
+      const tabs = document.querySelectorAll(".v-tabs li");
+      tabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
+          tabs.forEach((item) => item.classList.remove("is-active"));
+          tab.classList.add("is-active");
+          let parent = tab.parentNode;
+          selectedTab = Array.prototype.indexOf.call(parent.children, tab);
+          display();
+        });
+      });
+    </script>
+    <script type="module">
+      import { validateCode, resetSimulation, display } from "./js/main.js";
+      window.validateCode = validateCode;
+      window.resetSimulation = resetSimulation;
+      window.display = display;
+    </script>
+    <script src="./js/main.js" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/gh/virtual-labs/virtual-style@0.0.8-b/js/script.js"></script>
+  <script src="../assets/js/iframeResize.js"></script>
+        
+        </body>
+</html>

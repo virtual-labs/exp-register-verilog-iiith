@@ -1,0 +1,15 @@
+
+/home/runner/work/exp-register-verilog-iiith/exp-register-verilog-iiith/experiment/simulation/js/main.js
+  152:9   warning  'selectedTab' is not defined  no-undef
+  152:25  warning  'currentTab' is not defined   no-undef
+  184:9   warning  'selectedTab' is not defined  no-undef
+  184:25  warning  'currentTab' is not defined   no-undef
+  412:9   warning  'selectedTab' is not defined  no-undef
+  412:25  warning  'currentTab' is not defined   no-undef
+  489:21  warning  'selectedTab' is not defined  no-undef
+  489:37  warning  'currentTab' is not defined   no-undef
+  501:28  warning  'selectedTab' is not defined  no-undef
+  501:44  warning  'currentTab' is not defined   no-undef
+
+✖ 10 problems (0 errors, 10 warnings)
+
