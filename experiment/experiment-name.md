@@ -1,1 +1,1 @@
-## Experiment name
+## Design of Register using Verilog

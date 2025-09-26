@@ -2,38 +2,89 @@
   "version": 2.0,
   "questions": [
     {
-      "question": "This is a Sample Question 1?",
+      "question": "What is a register in digital electronics?",
       "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
+        "a": "A combinational circuit that performs arithmetic operations",
+        "b": "A sequential circuit that stores binary data",
+        "c": "A memory device that stores program instructions",
+        "d": "A logic gate that performs Boolean operations"
       },
+      "correctAnswer": "b",
+      "difficulty": "beginner",
       "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
-      },
-      "correctAnswer": "a",
-      "difficulty": "beginner"
+        "a": "Incorrect. Registers are not combinational circuits, they are sequential circuits that store data.",
+        "b": "Correct! A register is a sequential circuit that stores binary data using flip-flops.",
+        "c": "Incorrect. While registers can be part of memory systems, they are not specifically for program instructions.",
+        "d": "Incorrect. Registers are not logic gates, they are storage elements made up of flip-flops."
+      }
     },
     {
-      "question": "This is a Sample Question 2?",
+      "question": "What is the main difference between combinational and sequential circuits?",
       "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
+        "a": "Combinational circuits have memory while sequential circuits don't",
+        "b": "Sequential circuits have memory while combinational circuits don't",
+        "c": "Combinational circuits use more gates than sequential circuits",
+        "d": "Sequential circuits are faster than combinational circuits"
       },
+      "correctAnswer": "b",
+      "difficulty": "beginner",
       "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+        "a": "Incorrect. Combinational circuits don't have memory, they only perform logic operations.",
+        "b": "Correct! Sequential circuits have memory elements (flip-flops) while combinational circuits don't.",
+        "c": "Incorrect. The number of gates is not the defining difference between these circuit types.",
+        "d": "Incorrect. Speed is not the defining characteristic between these circuit types."
+      }
+    },
+    {
+      "question": "In a SISO register, how does data move through the register?",
+      "answers": {
+        "a": "All bits move simultaneously",
+        "b": "One bit at a time from input to output",
+        "c": "Bits move in both directions",
+        "d": "Bits move randomly through the register"
+      },
+      "correctAnswer": "b",
+      "difficulty": "intermediate",
+      "explanations": {
+        "a": "Incorrect. This describes a parallel shift register, not a SISO register.",
+        "b": "Correct! In a SISO register, data moves one bit at a time from input to output on each clock edge.",
+        "c": "Incorrect. This describes a bidirectional shift register, not a SISO register.",
+        "d": "Incorrect. Data movement in registers is deterministic and controlled by the clock signal."
+      }
+    },
+    {
+      "question": "What is the purpose of the clock signal in a sequential circuit?",
+      "answers": {
+        "a": "To provide power to the circuit",
+        "b": "To synchronize the movement of data",
+        "c": "To generate random numbers",
+        "d": "To control the input data"
+      },
+      "correctAnswer": "b",
+      "difficulty": "beginner",
+      "explanations": {
+        "a": "Incorrect. The clock signal is not used for power distribution, it's for timing control.",
+        "b": "Correct! The clock signal synchronizes when data moves through the circuit, ensuring proper operation.",
+        "c": "Incorrect. The clock signal is not used for random number generation.",
+        "d": "Incorrect. While the clock affects when data moves, it doesn't control the input data itself."
+      }
+    },
+    {
+      "question": "What is the minimum number of flip-flops needed for a 4-bit SISO register?",
+      "answers": {
+        "a": "2",
+        "b": "3",
+        "c": "4",
+        "d": "8"
       },
       "correctAnswer": "c",
-      "difficulty": "beginner"
+      "difficulty": "beginner",
+      "explanations": {
+        "a": "Incorrect. 2 flip-flops can only store 2 bits, which is insufficient for a 4-bit register.",
+        "b": "Incorrect. 3 flip-flops can only store 3 bits, which is insufficient for a 4-bit register.",
+        "c": "Correct! A 4-bit register needs exactly 4 flip-flops, one for each bit of storage.",
+        "d": "Incorrect. 8 flip-flops would be too many for a 4-bit register."
+      }
     }
   ]
 }
